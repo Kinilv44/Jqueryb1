@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery UI Draggable - Default functionality</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <link rel="stylesheet" href="sourcer.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(document).ready(function () {
+            //1
+            $("#draggable").draggable();
+            $("#hide").click(function () {
+                $("#pst").hide();
+
+            });
+            $("#show").click(function () {
+                $("#pst").show();
+            });
+            //1
+
+            //2
+            $("#draggable2").draggable();
+            $("#droppable2").droppable({
+                drop: function (event, ui) {
+                    $(this)
+                        .addClass("ui-state-highlight")
+                        .find("p")
+                        .html("Dropped!");
+                }
+            });
+            //2
+            //3
+            $("#resizable").resizable();
+            //3
+            //4
+            $("#selectable").selectable();
+            //4
+            //5
+            $("#sortable").sortable();
+            $("#sortable").disableSelection();
+            //5
+            // 6
+            $("#accordion").accordion();
+            // 6
+            //7
+            var availableTags = [
+                "ActionScript",
+                "AppleScript",
+                "Asp",
+                "BASIC",
+                "C",
+                "C++",
+                "Clojure",
+                "COBOL",
+                "ColdFusion",
+                "Erlang",
+                "Fortran",
+                "Groovy",
+                "Haskell",
+                "Java",
+                "JavaScript",
+                "Lisp",
+                "Perl",
+                "PHP",
+                "Python",
+                "Ruby",
+                "Scala",
+                "Scheme"
+            ];
+            $("#tags").autocomplete({
+                source: availableTags
+            });
+            //7
+            //8
+            $("#datepicker").datepicker();
+            //8
+            //9
+            $("#dialog").dialog();
+            //9
+            //10
+            $("#slider").slider();
+            //10
+            //11
+            $("#progressbar").progressbar({
+                value: 37
+            });//11
+            //12
+            var spinner = $("#spinner").spinner();
+
+            $("#disable").on("click", function () {
+                if (spinner.spinner("option", "disabled")) {
+                    spinner.spinner("enable");
+                } else {
+                    spinner.spinner("disable");
+                }
+            });
+            $("#destroy").on("click", function () {
+                if (spinner.spinner("instance")) {
+                    spinner.spinner("destroy");
+                } else {
+                    spinner.spinner();
+                }
+            });
+            $("#getvalue").on("click", function () {
+                alert(spinner.spinner("value"));
+            });
+            $("#setvalue").on("click", function () {
+                spinner.spinner("value", 5);
+            });
+
+            $("button").button();
+            //12
+            //13
+            $("#tabs").tabs();
+            //13
+            //14 
+            $("#button").on("click", function () {
+                $("#effect").addClass("newClass", 1000, callback);
+            });
+            function callback() {
+                setTimeout(function () {
+                    $("#effect").removeClass("newClass");
+                }, 1500);
+            }//14
+        });
+
+    </script>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div id="draggable" class="ui-widget-content">
+                    <p id="pst">Drag me around</p>
+                </div>
+                <button id="hide" type="button" class="btn btn-primary">hide</button>
+                <button id="show" type="button" class="btn btn-danger">show</button>
+            </div>
+            <div class="col-lg-4">
+                <div id="draggable2" class="ui-widget-content">
+                    <p>Drag me to my target</p>
+                </div>
+
+                <div id="droppable2" class="ui-widget-header">
+                    <p>Drop here</p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div id="resizable" class="ui-widget-content">
+                    <h3 class="ui-widget-header">Resizable</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <ol id="selectable">
+                    <li class="ui-widget-content">Item 1</li>
+                    <li class="ui-widget-content">Item 2</li>
+                    <li class="ui-widget-content">Item 3</li>
+                    <li class="ui-widget-content">Item 4</li>
+                    <li class="ui-widget-content">Item 5</li>
+                    <li class="ui-widget-content">Item 6</li>
+                    <li class="ui-widget-content">Item 7</li>
+                </ol>
+
+            </div>
+            <div class="col-lg-4">
+                <ul id="sortable">
+                    <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 1</li>
+                    <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 2</li>
+                    <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 3</li>
+                    <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 4</li>
+                    <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 5</li>
+                    <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 6</li>
+                    <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 7</li>
+                </ul>
+            </div>
+            <div id="accordion" class="col-lg-4">
+                <button class="accordion">Section 1</button>
+                <div>
+                    <p>
+                        <img src="abx.png" alt="">
+                    </p>
+                </div>
+                <button class="accordion">Section 2</button>
+                <div>
+                    <p>
+                        <img src="abx.png" alt="">
+                    </p>
+                </div>
+                <button class="accordion">Section 3</button>
+                <div>
+                    <p>
+                        <img src="abx.png" alt="">
+                    </p>
+                    <ul>
+                        <img src="abx.png" alt="">
+                    </ul>
+                </div>
+                <button class="accordion">Section 4</button>
+                <div>
+                    <p>
+                        <img src="abx.png" alt="">
+                    </p>
+                    <p>
+                        <img src="abx.png" alt="">
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="ui-widget col-lg-4">
+                <label for="tags">Tags: </label>
+                <input id="tags">
+            </div>
+            <div class=" col-lg-4">
+                <p>Date: <input type="text" id="datepicker"></p>
+
+            </div>
+            <div id="dialog" title="Basic dialog" class=" col-lg-4">
+                <p>This is the default dialog which is useful for displaying information. The dialog window can be
+                    moved,
+                    resized and closed with the &apos;x&apos; icon.</p>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div id="slider" class=" col-lg-4"></div>
+            <div id="progressbar" class=" col-lg-4"></div>
+            <div class=" col-lg-4">
+                <p>
+                    <label for="spinner">Select a value:</label>
+                    <input id="spinner" name="value">
+                </p>
+
+                <p>
+                    <button id="disable">Toggle disable/enable</button>
+                    <button id="destroy">Toggle widget</button>
+                </p>
+
+                <p>
+                    <button id="getvalue">Get value</button>
+                    <button id="setvalue">Set value to 5</button>
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div id="tabs" class="col-lg-4">
+                <ul>
+                    <li><a href="#tabs-1">Nunc tincidunt</a></li>
+                    <li><a href="#tabs-2">Proin dolor</a></li>
+                    <li><a href="#tabs-3">Aenean lacinia</a></li>
+                </ul>
+                <div id="tabs-1">
+                    <p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec
+
+                        .</p>
+                </div>
+                <div id="tabs-2">
+                    <p>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus
+                        id
+                    </p>
+                </div>
+                <div id="tabs-3">
+                    <p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel
+                        vehicula
+                        .</p>
+                    <p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus.
+                        Nulla
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="toggler">
+                    <div id="effect" class="ui-corner-all">
+                        <img src="abx.png" alt="" width="200px" height="100px">
+                    </div>
+                </div>
+
+                <button id="button" class="ui-state-default ui-corner-all">Run Effect</button>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

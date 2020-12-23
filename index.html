@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#test").click(function () {
+                $("img").hide();
+            });
+            $("#test2").click(function () {
+                $("img").show();
+            });
+            $("#understand").click(function () {
+                var div = $("div");
+                div.animate({ left: '100px' }, "slow");
+                div.animate({ fontSize: '100px' }, "slow");
+            });
+        });
+
+    </script>
+</head>
+
+<body>
+
+    <button id="test">
+        Hide
+    </button>
+    <button id="test2"> show</button>
+    <img src="abx.png" alt="" width="200px" height="auto">
+    <br> <br> <br> <br>
+    <button id="understand">start</button>
+    <div style="background:#dd6c21;height:150px;width:330px;position:absolute;">HELLO</div>
+</body>
+
+</html>
